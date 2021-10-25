@@ -114,6 +114,9 @@ function apostar(){
 
     // desabilitar todos os botões
     desabilitarTodosNumeros();
+
+    // habilitar o botão reiniciar
+    document.getElementById("btnReiniciar").style.display = 'inline';
 }
 
 function desabilitarTodosNumeros(){
@@ -121,3 +124,8 @@ function desabilitarTodosNumeros(){
         document.getElementById("num_"+ i).disabled= true;
     }
 }
+
+let btn = document.querySelector("#btnReiniciar");
+btn.addEventListener("click", function(){
+    location.reload();
+});
