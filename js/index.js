@@ -1,13 +1,52 @@
+
+// #region Variáveis
 const numerosApostados = [];
 const resultado = [];
 let valorAposta = 0;
 let qtdAcertos= 0;
+// #endregion
 
+// #region Desabilita o botão apostar
 const btnApostar = document.getElementById("btnApostar");
 btnApostar.disabled = true;
+// #endregion
 
+// #region Chama a função que sorteia os números
 sortearNumeros();
+// #endregion
 
+// #region Alterar Tema
+
+// Obtenha a entrada de alternância do tema
+const themeToggle = document.querySelector(
+    '.switch input[type="checkbox"]'
+  );
+// Função que irá mudar o tema com base em se a alternância do tema está marcada ou não
+function switchTheme(e) {
+    if (e.target.checked) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    }
+}
+// Adicione um ouvinte de evento ao alternador de tema, o que mudará o tema
+themeToggle.addEventListener("change", switchTheme, false);
+
+// Obtenha o tema atual do armazenamento local
+const currentTheme = localStorage.getItem("theme");
+// se o item de armazenamento local atual pode ser encontrado
+if (currentTheme) {
+//  Defina o atributo body data-theme para corresponder ao item de armazenamento local
+document.documentElement.setAttribute("data-theme", currentTheme);
+// Se o tema atual estiver escuro, verifique a alternância do tema
+if (currentTheme === "dark") {
+    themeToggle.checked = true;
+  }
+}
+
+// #endregion
+
+// #region Funçoes
 function sortearNumeros(){
     // sorteando os números do jogo
     for(i = 0; i < 6; i++){
@@ -129,3 +168,18 @@ let btn = document.querySelector("#btnReiniciar");
 btn.addEventListener("click", function(){
     location.reload();
 });
+
+function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      
+      // Defina a preferência de tema do usuário como escuro
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      
+      // Defina a preferência de tema do usuário como claro
+      localStorage.setItem("theme", "light");
+    }
+}
+// #endregion

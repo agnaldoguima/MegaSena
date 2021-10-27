@@ -13,6 +13,7 @@ body{
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--bg-color);
 }
 
 .container{
@@ -22,6 +23,7 @@ body{
     border: 2px solid #008000;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: var(--bg-color-container);
 }
 
 header{
@@ -66,9 +68,10 @@ main button:hover:disabled{
     font-size: 1.5em;
     border-radius: 6px;
     border: 1px solid #008000;
-    color: #008000;
+    color: var(--font-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Gemunu Libre', sans-serif;
+    background-color: var(--bg-color);
 }
 
 .btn:hover{
@@ -143,3 +146,82 @@ footer #acertos{
         min-height: 450px;
     }
 }
+
+/* O interruptor - a caixa ao redor do controle deslizante */
+:root {
+    --bg-color: #ffffff;
+    --font-color: #008000;
+  }
+
+  [data-theme="dark"] {
+    --bg-color: #2f3136;
+    --bg-color-container: #0f1118;
+    --font-color: #FFFFFF;
+  }
+
+.alternarTema{
+    text-align: right;
+    width: 400px;
+    margin-bottom: 5px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Ocultar caixa de seleção HTML padrão */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* O controle deslizante */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #0f1118;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #0f1118;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Controles deslizantes arredondados */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
